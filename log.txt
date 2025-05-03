@@ -1,0 +1,9 @@
+[lari] [0] Seguiu gabi
+[alexia] [0] Seguiu gabi
+[gabi] [1] Fez uma postagem: hey hey
+[lari] [2] Recebeu notificação da postagem de gabi: hey hey
+[alexia] [2] Recebeu notificação da postagem de gabi: hey hey
+[webis] [0] Seguiu gabi
+[webis] [0] Seguiu lari
+[lari] [3] Fez uma postagem: uhuuuu
+[webis] [4] Recebeu notificação da postagem de lari: uhuuuu
