@@ -1,7 +1,16 @@
 from usuario import Usuario
 import os
+import time
+import requests
 
 usuarios = {}
+
+# Lista de servidores de mensagens
+SERVIDORES_MENSAGENS = [
+    "http://localhost:3001",
+    "http://localhost:3002",
+    "http://localhost:3003"
+]
 
 # Carrega usuários salvos do arquivo
 if os.path.exists("usuarios.txt"):
@@ -32,7 +41,8 @@ def menu():
     print("4. Mostrar log de um usuário")
     print("5. Ver notificações")
     print("6. Resetar sistema")
-    print("7. Sair")
+    print("7. Enviar Mensagem Privada")
+    print("8. Sair")
 
 def criar_usuario():
     nome = input("Nome do novo usuário: ").strip()
@@ -52,6 +62,43 @@ def fazer_postagem():
     texto = input("Digite o conteúdo da postagem: ").strip()
     usuarios[nome].postar(texto)
     print("Postagem feita com sucesso.")
+    print("\nEnviando para todos os servidores de mensagens...")
+    payload = {
+        "nome": nome,
+        "texto": texto,
+        "timestamp": int(time.time() * 1000)
+    }
+    for servidor in SERVIDORES_MENSAGENS:
+        try:
+            response = requests.post(f"{servidor}/postar", json=payload)
+            print(f"✅ [{servidor}] Resposta: {response.json()}")
+        except Exception as e:
+            print(f"❌ [{servidor}] Erro: {e}")
+
+def enviar_msg():
+    de = input("Remetente: ").strip()
+    if de not in usuarios:
+        print("Erro: Usuário remetente não cadastrado.")
+        return
+    para = input("Destinatário: ").strip()
+    if para not in usuarios:
+        print("Erro: Usuário destinatário não cadastrado.")
+        return
+    texto = input("Digite a mensagem: ").strip()
+    payload = {
+        "de": de,
+        "para": para,
+        "texto": texto,
+        "timestamp": int(time.time() * 1000)
+    }
+
+    print("\nEnviando para todos os servidores de mensagens...")
+    for servidor in SERVIDORES_MENSAGENS:
+        try:
+            response = requests.post(f"{servidor}/enviar", json=payload)
+            print(f"✅ [{servidor}] Resposta: {response.json()}")
+        except Exception as e:
+            print(f"❌ [{servidor}] Erro: {e}")
 
 def seguir_usuario():
     seguidor = input("Quem vai seguir? ").strip()
@@ -92,6 +139,7 @@ def ver_notificacoes():
         user.notificacoes.clear()
     else:
         print("Sem notificações novas.")
+
 def resetar_sistema():
     confirmacao = input("Tem certeza que deseja apagar todos os dados? (s/n): ").strip().lower()
     if confirmacao == "s":
@@ -122,11 +170,12 @@ def main():
         elif escolha == "6":
             resetar_sistema()
         elif escolha == "7":
+            enviar_msg()
+        elif escolha == "8":
             print("Saindo...")
             break
         else:
             print("Opção inválida.")
-
 
 if __name__ == "__main__":
     main()

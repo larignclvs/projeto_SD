@@ -7,3 +7,18 @@
 [webis] [0] Seguiu lari
 [lari] [3] Fez uma postagem: uhuuuu
 [webis] [4] Recebeu notificaÃ§Ã£o da postagem de lari: uhuuuu
+[webis] [1] Fez uma postagem: que passa?
+[lari] [1] Fez uma postagem: passa nada
+[webis] [2] Recebeu notificação da postagem de lari: passa nada
+[gabi] [1] Fez uma postagem: num passa
+[lari] [2] Recebeu notificação da postagem de gabi: num passa
+[alexia] [2] Recebeu notificação da postagem de gabi: num passa
+[webis] [3] Recebeu notificação da postagem de gabi: num passa
+[gabi] [1] Fez uma postagem: aiaiaiai
+[lari] [2] Recebeu notificação da postagem de gabi: aiaiaiai
+[alexia] [2] Recebeu notificação da postagem de gabi: aiaiaiai
+[webis] [2] Recebeu notificação da postagem de gabi: aiaiaiai
+[lari] [3] Fez uma postagem: uiuiui
+[webis] [4] Recebeu notificação da postagem de lari: uiuiui
+[webis] [1] Fez uma postagem: aiai meninas que pasa²
+[webis] [1] Fez uma postagem: oiioi
