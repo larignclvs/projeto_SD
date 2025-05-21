@@ -20,20 +20,77 @@ let mensagens = []; // Armazena mensagens recebidas
 let coordenador = null;
 let meuRelogio = Date.now();
 
+const net = require('net'); // já está no topo
+
+function replicarParaServidorC(dado) {
+  const socket = new net.Socket();
+  const mensagem = `timestamp:${Date.now()}|${JSON.stringify(dado)}`;
+
+  socket.connect(8081, '127.0.0.1', () => {
+    socket.write(mensagem);
+    socket.end();
+  });
+
+  socket.on('error', (err) => {
+    console.error('Erro ao conectar com servidor C:', err.message);
+  });
+}
+
 // Rota para receber mensagem privada
-app.post('/enviar', (req, res) => {
-  const { de, para, texto, timestamp } = req.body;
-  mensagens.push({ de, para, texto, timestamp });
+app.post('/enviar', async (req, res) => {
+  const { de, para, texto } = req.body;
+  const timestamp = Date.now();
+  const msg = { tipo: 'mensagem', de, para, texto, timestamp };
+
+  mensagens.push(msg);
   console.log(`[Mensagem] ${de} -> ${para}: ${texto}`);
-  return res.json({ status: 'Mensagem recebida', servidor: PORT });
+
+  for (let s of outrosServidores) {
+    try {
+      await fetch(s.url + '/enviar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ de, para, texto })
+      });
+    } catch (e) {
+      console.log(`Erro replicando para ${s.url}:`, e.message);
+    }
+  }
+
+  replicarParaServidorC(msg);
+
+  res.json({ status: 'Mensagem replicada', servidor: PORT });
 });
 
-app.post('/postar', (req, res) => {
+
+
+app.post('/postar', async (req, res) => {
   const { nome, texto } = req.body;
-  postagens.push({nome, texto});
+  const timestamp = Date.now();
+  const postagem = { tipo: 'postagem', nome, texto, timestamp };
+
+  postagens.push(postagem);
   console.log(`[Postagem] ${nome}: ${texto}`);
-  return res.json({ status: 'Postagem recebida', servidor: PORT });
+
+  // Replicar para os outros servidores via /replicar
+  for (let s of outrosServidores) {
+    try {
+      await fetch(s.url + '/replicar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(postagem)
+      });
+    } catch (e) {
+      console.log(`Erro replicando para ${s.url}:`, e.message);
+    }
+  }
+
+  replicarParaServidorC(postagem);
+
+  res.json({ status: 'Postagem replicada', servidor: PORT });
 });
+
+
 
 app.get('/postagens', (req, res) => {
   return res.json(postagens);
@@ -48,6 +105,20 @@ app.get('/mensagens', (req, res) => {
 app.get('/vivo', (req, res) => {
   res.json({ id: meuId });
 });
+
+app.post('/replicar', (req, res) => {
+  const { nome, texto, timestamp } = req.body;
+  const postagem = { tipo: 'postagem', nome, texto, timestamp };
+
+  // Evita duplicação
+  if (!postagens.find(p => p.nome === nome && p.texto === texto && p.timestamp === timestamp)) {
+    postagens.push(postagem);
+    //console.log(`[Replica] ${nome}: ${texto}`);
+  }
+
+  res.json({ status: 'Postagem replicada localmente' });
+});
+
 
 // Endpoint para iniciar a eleição
 app.post('/iniciar-eleicao', async (req, res) => {
@@ -76,6 +147,22 @@ app.post('/iniciar-eleicao', async (req, res) => {
   res.json({ coordenador });
 });
 
+async function sincronizarComServidorPrincipal() {
+  try {
+    const r1 = await fetch('http://localhost:3002/postagens');
+    const r2 = await fetch('http://localhost:3002/mensagens');
+    postagens = await r1.json();
+    mensagens = await r2.json();
+    console.log('✅ Sincronização concluída com servidor2.');
+  } catch (e) {
+    console.error('❌ Falha na sincronização:', e.message);
+  }
+}
+
+app.listen(PORT, () => {
+  console.log(`Servidor ${meuId} rodando na porta ${PORT}`);
+  sincronizarComServidorPrincipal(); // chamada automática ao iniciar
+});
 
 app.post('/sincronizar', (req, res) => {
   const { novoTempo } = req.body;

@@ -22,3 +22,45 @@
 [webis] [4] Recebeu notifica��o da postagem de lari: uiuiui
 [webis] [1] Fez uma postagem: aiai meninas que pasa�
 [webis] [1] Fez uma postagem: oiioi
+[gabi] [1] Fez uma postagem: teste 1
+[lari] [2] Recebeu notificação da postagem de gabi: teste 1
+[alexia] [2] Recebeu notificação da postagem de gabi: teste 1
+[webis] [2] Recebeu notificação da postagem de gabi: teste 1
+[gabi] [1] Fez uma postagem: ola teste 2!
+[lari] [2] Recebeu notificação da postagem de gabi: ola teste 2!
+[alexia] [2] Recebeu notificação da postagem de gabi: ola teste 2!
+[webis] [2] Recebeu notificação da postagem de gabi: ola teste 2!
+[gabi] [2] Fez uma postagem: teste 3!
+[lari] [3] Recebeu notificação da postagem de gabi: teste 3!
+[alexia] [3] Recebeu notificação da postagem de gabi: teste 3!
+[webis] [3] Recebeu notificação da postagem de gabi: teste 3!
+[gabi] [1] Fez uma postagem: teste teste tese
+[lari] [2] Recebeu notificação da postagem de gabi: teste teste tese
+[alexia] [2] Recebeu notificação da postagem de gabi: teste teste tese
+[webis] [2] Recebeu notificação da postagem de gabi: teste teste tese
+[gabi] [1] Fez uma postagem: teste aaaaaa
+[lari] [2] Recebeu notificação da postagem de gabi: teste aaaaaa
+[alexia] [2] Recebeu notificação da postagem de gabi: teste aaaaaa
+[webis] [2] Recebeu notificação da postagem de gabi: teste aaaaaa
+[gabi] [2] Fez uma postagem: teste aaaaaaaaaaaaa
+[lari] [3] Recebeu notificação da postagem de gabi: teste aaaaaaaaaaaaa
+[alexia] [3] Recebeu notificação da postagem de gabi: teste aaaaaaaaaaaaa
+[webis] [3] Recebeu notificação da postagem de gabi: teste aaaaaaaaaaaaa
+[ana] [1] Fez uma postagem: ola eu sou a ana
+[ana] [1] Fez uma postagem: ola sou ana
+[nick] [1] Fez uma postagem: ola sou nick
+[maya] [1] Fez uma postagem: ola sou maya
+[eva] [1] Fez uma postagem: ola sou eva
+[igor] [1] Fez uma postagem: ola sou igor
+[paçoca] [1] Fez uma postagem: ola sou pacoquita
+[gabi] [1] Fez uma postagem: teste servidor3 derrubado
+[lari] [2] Recebeu notificação da postagem de gabi: teste servidor3 derrubado
+[alexia] [2] Recebeu notificação da postagem de gabi: teste servidor3 derrubado
+[webis] [2] Recebeu notificação da postagem de gabi: teste servidor3 derrubado
+[nick] [0] Seguiu gabi
+[ana] [1] Fez uma postagem: yo soy ana
+[eva] [1] Fez uma postagem: im eva
+[maya] [1] Fez uma postagem: mayaaaaaa
+[paçoca] [1] Fez uma postagem: pacocaaaaaaa
+[lari] [1] Fez uma postagem: oiiiiiii
+[webis] [2] Recebeu notificação da postagem de lari: oiiiiiii
