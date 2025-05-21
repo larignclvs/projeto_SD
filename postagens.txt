@@ -7,3 +7,22 @@ gabi - aiaiaiai - 07/05/2025 22:25:36 - L�gico: 1
 lari - uiuiui - 07/05/2025 22:26:35 - L�gico: 3
 webis - aiai meninas que pasa� - 07/05/2025 22:27:49 - L�gico: 1
 webis - oiioi - 07/05/2025 22:29:54 - L�gico: 1
+gabi - teste 1 - 20/05/2025 23:08:08 - Lógico: 1
+gabi - ola teste 2! - 20/05/2025 23:33:02 - Lógico: 1
+gabi - teste 3! - 20/05/2025 23:33:50 - Lógico: 2
+gabi - teste teste tese - 20/05/2025 23:34:51 - Lógico: 1
+gabi - teste aaaaaa - 21/05/2025 00:00:15 - Lógico: 1
+gabi - teste aaaaaaaaaaaaa - 21/05/2025 00:03:41 - Lógico: 2
+ana - ola eu sou a ana - 21/05/2025 00:10:12 - Lógico: 1
+ana - ola sou ana - 21/05/2025 00:14:57 - Lógico: 1
+nick - ola sou nick - 21/05/2025 00:15:07 - Lógico: 1
+maya - ola sou maya - 21/05/2025 00:15:16 - Lógico: 1
+eva - ola sou eva - 21/05/2025 00:15:21 - Lógico: 1
+igor - ola sou igor - 21/05/2025 00:15:51 - Lógico: 1
+paçoca - ola sou pacoquita - 21/05/2025 00:16:10 - Lógico: 1
+gabi - teste servidor3 derrubado - 21/05/2025 00:17:14 - Lógico: 1
+ana - yo soy ana - 21/05/2025 00:22:49 - Lógico: 1
+eva - im eva - 21/05/2025 00:22:56 - Lógico: 1
+maya - mayaaaaaa - 21/05/2025 00:23:10 - Lógico: 1
+paçoca - pacocaaaaaaa - 21/05/2025 00:23:24 - Lógico: 1
+lari - oiiiiiii - 21/05/2025 00:27:05 - Lógico: 1

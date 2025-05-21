@@ -13,8 +13,18 @@
     "body-parser": "^2.2.0",
     "cors": "^2.8.5",
     "express": "^5.1.0",
-    "parser": "^0.1.4"
+    "node-fetch": "^3.3.2",
+    "parser": "^0.1.4",
+    "zeromq": "^6.4.2"
   },
-  "devDependencies": {},
-  "description": ""
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabriellemitie/projeto_SD.git"
+  },
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/gabriellemitie/projeto_SD/issues"
+  },
+  "homepage": "https://github.com/gabriellemitie/projeto_SD#readme"
 }
