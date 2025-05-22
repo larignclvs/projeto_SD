@@ -1,0 +1,54 @@
+version: "3.8"
+
+services:
+  servidor1:
+    build:
+      context: .
+      dockerfile: servidor-node.Dockerfile
+    environment:
+      - SERVIDOR=servidor1.js
+      - PORT=3001
+      - MEU_ID=1
+    ports:
+      - "3001:3001"
+    working_dir: /app/
+    volumes:
+      - ./servidor:/app/servidor
+    networks:
+      - rede-servidores
+
+  servidor2:
+    build:
+      context: .
+      dockerfile: servidor-node.Dockerfile
+    environment:
+      - SERVIDOR=servidor2.js
+      - PORT=3002
+      - MEU_ID=2
+    ports:
+      - "3002:3002"
+    working_dir: /app/
+    volumes:
+      - ./servidor:/app/servidor
+    networks:
+      - rede-servidores
+
+  servidor3:
+    build:
+      context: .
+      dockerfile: servidor-node.Dockerfile
+    environment:
+      - SERVIDOR=servidor3.js
+      - PORT=3003
+      - MEU_ID=3
+    ports:
+      - "3003:3003"
+    working_dir: /app/
+    volumes:
+      - ./servidor:/app/servidor
+    networks:
+      - rede-servidores    
+
+networks:
+  rede-servidores:
+

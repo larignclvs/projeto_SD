@@ -1,0 +1,173 @@
+[lari] [0] Seguiu gabi
+[alexia] [0] Seguiu gabi
+[gabi] [1] Fez uma postagem: hey hey
+[lari] [2] Recebeu notificação da postagem de gabi: hey hey
+[alexia] [2] Recebeu notificação da postagem de gabi: hey hey
+[webis] [0] Seguiu gabi
+[webis] [0] Seguiu lari
+[lari] [3] Fez uma postagem: uhuuuu
+[webis] [4] Recebeu notificação da postagem de lari: uhuuuu
+[webis] [1] Fez uma postagem: que passa?
+[lari] [1] Fez uma postagem: passa nada
+[webis] [2] Recebeu notifica��o da postagem de lari: passa nada
+[gabi] [1] Fez uma postagem: num passa
+[lari] [2] Recebeu notifica��o da postagem de gabi: num passa
+[alexia] [2] Recebeu notifica��o da postagem de gabi: num passa
+[webis] [3] Recebeu notifica��o da postagem de gabi: num passa
+[gabi] [1] Fez uma postagem: aiaiaiai
+[lari] [2] Recebeu notifica��o da postagem de gabi: aiaiaiai
+[alexia] [2] Recebeu notifica��o da postagem de gabi: aiaiaiai
+[webis] [2] Recebeu notifica��o da postagem de gabi: aiaiaiai
+[lari] [3] Fez uma postagem: uiuiui
+[webis] [4] Recebeu notifica��o da postagem de lari: uiuiui
+[webis] [1] Fez uma postagem: aiai meninas que pasa�
+[webis] [1] Fez uma postagem: oiioi
+[gabi] [1] Fez uma postagem: teste 1
+[lari] [2] Recebeu notificação da postagem de gabi: teste 1
+[alexia] [2] Recebeu notificação da postagem de gabi: teste 1
+[webis] [2] Recebeu notificação da postagem de gabi: teste 1
+[gabi] [1] Fez uma postagem: ola teste 2!
+[lari] [2] Recebeu notificação da postagem de gabi: ola teste 2!
+[alexia] [2] Recebeu notificação da postagem de gabi: ola teste 2!
+[webis] [2] Recebeu notificação da postagem de gabi: ola teste 2!
+[gabi] [2] Fez uma postagem: teste 3!
+[lari] [3] Recebeu notificação da postagem de gabi: teste 3!
+[alexia] [3] Recebeu notificação da postagem de gabi: teste 3!
+[webis] [3] Recebeu notificação da postagem de gabi: teste 3!
+[gabi] [1] Fez uma postagem: teste teste tese
+[lari] [2] Recebeu notificação da postagem de gabi: teste teste tese
+[alexia] [2] Recebeu notificação da postagem de gabi: teste teste tese
+[webis] [2] Recebeu notificação da postagem de gabi: teste teste tese
+[gabi] [1] Fez uma postagem: teste aaaaaa
+[lari] [2] Recebeu notificação da postagem de gabi: teste aaaaaa
+[alexia] [2] Recebeu notificação da postagem de gabi: teste aaaaaa
+[webis] [2] Recebeu notificação da postagem de gabi: teste aaaaaa
+[gabi] [2] Fez uma postagem: teste aaaaaaaaaaaaa
+[lari] [3] Recebeu notificação da postagem de gabi: teste aaaaaaaaaaaaa
+[alexia] [3] Recebeu notificação da postagem de gabi: teste aaaaaaaaaaaaa
+[webis] [3] Recebeu notificação da postagem de gabi: teste aaaaaaaaaaaaa
+[ana] [1] Fez uma postagem: ola eu sou a ana
+[ana] [1] Fez uma postagem: ola sou ana
+[nick] [1] Fez uma postagem: ola sou nick
+[maya] [1] Fez uma postagem: ola sou maya
+[eva] [1] Fez uma postagem: ola sou eva
+[igor] [1] Fez uma postagem: ola sou igor
+[paçoca] [1] Fez uma postagem: ola sou pacoquita
+[gabi] [1] Fez uma postagem: teste servidor3 derrubado
+[lari] [2] Recebeu notificação da postagem de gabi: teste servidor3 derrubado
+[alexia] [2] Recebeu notificação da postagem de gabi: teste servidor3 derrubado
+[webis] [2] Recebeu notificação da postagem de gabi: teste servidor3 derrubado
+[nick] [0] Seguiu gabi
+[ana] [1] Fez uma postagem: yo soy ana
+[eva] [1] Fez uma postagem: im eva
+[maya] [1] Fez uma postagem: mayaaaaaa
+[paçoca] [1] Fez uma postagem: pacocaaaaaaa
+[lari] [1] Fez uma postagem: oiiiiiii
+[webis] [2] Recebeu notificação da postagem de lari: oiiiiiii
+[Ana] [1] Fez uma postagem: Oi, eu sou Ana e esta é uma postagem automática.
+[Beto] [1] Fez uma postagem: Oi, eu sou Beto e esta é uma postagem automática.
+[Carol] [1] Fez uma postagem: Oi, eu sou Carol e esta é uma postagem automática.
+[Davi] [1] Fez uma postagem: Oi, eu sou Davi e esta é uma postagem automática.
+[Eva] [1] Fez uma postagem: Oi, eu sou Eva e esta é uma postagem automática.
+[Ana] [1] Fez uma postagem: Oi, eu sou Ana e esta é uma postagem automática.
+[Beto] [1] Fez uma postagem: Oi, eu sou Beto e esta é uma postagem automática.
+[Carol] [1] Fez uma postagem: Oi, eu sou Carol e esta é uma postagem automática.
+[Davi] [1] Fez uma postagem: Oi, eu sou Davi e esta é uma postagem automática.
+[Eva] [1] Fez uma postagem: Oi, eu sou Eva e esta é uma postagem automática.
+[Ana] [1] Fez uma postagem: Oi, eu sou Ana e esta é uma postagem automática.
+[Beto] [1] Fez uma postagem: Oi, eu sou Beto e esta é uma postagem automática.
+[Carol] [1] Fez uma postagem: Oi, eu sou Carol e esta é uma postagem automática.
+[Davi] [1] Fez uma postagem: Oi, eu sou Davi e esta é uma postagem automática.
+[Eva] [1] Fez uma postagem: Oi, eu sou Eva e esta é uma postagem automática.
+[Ana] [2] Fez uma postagem: Oi, eu sou Ana e esta é uma postagem automática.
+[Beto] [2] Fez uma postagem: Oi, eu sou Beto e esta é uma postagem automática.
+[Carol] [2] Fez uma postagem: Oi, eu sou Carol e esta é uma postagem automática.
+[Davi] [2] Fez uma postagem: Oi, eu sou Davi e esta é uma postagem automática.
+[Eva] [2] Fez uma postagem: Oi, eu sou Eva e esta é uma postagem automática.
+[Ana] [3] Fez uma postagem: Oi, eu sou Ana e esta é uma postagem automática.
+[Beto] [3] Fez uma postagem: Oi, eu sou Beto e esta é uma postagem automática.
+[Carol] [3] Fez uma postagem: Oi, eu sou Carol e esta é uma postagem automática.
+[Davi] [3] Fez uma postagem: Oi, eu sou Davi e esta é uma postagem automática.
+[Eva] [3] Fez uma postagem: Oi, eu sou Eva e esta é uma postagem automática.
+[Ana] [4] Fez uma postagem: Oi, eu sou Ana e esta é uma postagem automática.
+[Beto] [4] Fez uma postagem: Oi, eu sou Beto e esta é uma postagem automática.
+[Carol] [4] Fez uma postagem: Oi, eu sou Carol e esta é uma postagem automática.
+[Davi] [4] Fez uma postagem: Oi, eu sou Davi e esta é uma postagem automática.
+[Eva] [4] Fez uma postagem: Oi, eu sou Eva e esta é uma postagem automática.
+[Ana] [1] Fez uma postagem: Oi, eu sou Ana e esta é uma postagem automática.
+[Beto] [1] Fez uma postagem: Oi, eu sou Beto e esta é uma postagem automática.
+[Carol] [1] Fez uma postagem: Oi, eu sou Carol e esta é uma postagem automática.
+[Davi] [1] Fez uma postagem: Oi, eu sou Davi e esta é uma postagem automática.
+[Eva] [1] Fez uma postagem: Oi, eu sou Eva e esta é uma postagem automática.
+[Ana] [1] Fez uma postagem: Oi, eu sou Ana e esta é uma postagem automática.
+[Eva] [2] Recebeu notificação da postagem de Ana: Oi, eu sou Ana e esta é uma postagem automática.
+[Ana] [1] Fez uma postagem: Oi, eu sou Ana e esta é uma postagem automática.
+[Eva] [2] Recebeu notificação da postagem de Ana: Oi, eu sou Ana e esta é uma postagem automática.
+[Beto] [1] Fez uma postagem: Oi, eu sou Beto e esta é uma postagem automática.
+[Ana] [2] Recebeu notificação da postagem de Beto: Oi, eu sou Beto e esta é uma postagem automática.
+[Carol] [1] Fez uma postagem: Oi, eu sou Carol e esta é uma postagem automática.
+[Beto] [2] Recebeu notificação da postagem de Carol: Oi, eu sou Carol e esta é uma postagem automática.
+[Davi] [1] Fez uma postagem: Oi, eu sou Davi e esta é uma postagem automática.
+[Carol] [2] Recebeu notificação da postagem de Davi: Oi, eu sou Davi e esta é uma postagem automática.
+[Eva] [3] Fez uma postagem: Oi, eu sou Eva e esta é uma postagem automática.
+[Davi] [4] Recebeu notificação da postagem de Eva: Oi, eu sou Eva e esta é uma postagem automática.
+[Ana] [1] Fez uma postagem: Oi, eu sou Ana e esta é uma postagem automática.
+[Eva] [2] Recebeu notificação da postagem de Ana: Oi, eu sou Ana e esta é uma postagem automática.
+[Beto] [1] Fez uma postagem: Oi, eu sou Beto e esta é uma postagem automática.
+[Ana] [2] Recebeu notificação da postagem de Beto: Oi, eu sou Beto e esta é uma postagem automática.
+[Carol] [1] Fez uma postagem: Oi, eu sou Carol e esta é uma postagem automática.
+[Beto] [2] Recebeu notificação da postagem de Carol: Oi, eu sou Carol e esta é uma postagem automática.
+[Davi] [1] Fez uma postagem: Oi, eu sou Davi e esta é uma postagem automática.
+[Carol] [2] Recebeu notificação da postagem de Davi: Oi, eu sou Davi e esta é uma postagem automática.
+[Eva] [3] Fez uma postagem: Oi, eu sou Eva e esta é uma postagem automática.
+[Davi] [4] Recebeu notificação da postagem de Eva: Oi, eu sou Eva e esta é uma postagem automática.
+[Ana] [1] Fez uma postagem: Oi, eu sou Ana e esta é uma postagem automática.
+[Eva] [2] Recebeu notificação da postagem de Ana: Oi, eu sou Ana e esta é uma postagem automática.
+[Beto] [1] Fez uma postagem: Oi, eu sou Beto e esta é uma postagem automática.
+[Ana] [2] Recebeu notificação da postagem de Beto: Oi, eu sou Beto e esta é uma postagem automática.
+[Carol] [1] Fez uma postagem: Oi, eu sou Carol e esta é uma postagem automática.
+[Beto] [2] Recebeu notificação da postagem de Carol: Oi, eu sou Carol e esta é uma postagem automática.
+[Davi] [1] Fez uma postagem: Oi, eu sou Davi e esta é uma postagem automática.
+[Carol] [2] Recebeu notificação da postagem de Davi: Oi, eu sou Davi e esta é uma postagem automática.
+[Eva] [3] Fez uma postagem: Oi, eu sou Eva e esta é uma postagem automática.
+[Davi] [4] Recebeu notificação da postagem de Eva: Oi, eu sou Eva e esta é uma postagem automática.
+[Ana] [1] Fez uma postagem: Oi, eu sou Ana e esta é uma postagem automática.
+[Eva] [2] Recebeu notificação da postagem de Ana: Oi, eu sou Ana e esta é uma postagem automática.
+[Beto] [1] Fez uma postagem: Oi, eu sou Beto e esta é uma postagem automática.
+[Ana] [2] Recebeu notificação da postagem de Beto: Oi, eu sou Beto e esta é uma postagem automática.
+[Carol] [1] Fez uma postagem: Oi, eu sou Carol e esta é uma postagem automática.
+[Beto] [2] Recebeu notificação da postagem de Carol: Oi, eu sou Carol e esta é uma postagem automática.
+[Davi] [1] Fez uma postagem: Oi, eu sou Davi e esta é uma postagem automática.
+[Carol] [2] Recebeu notificação da postagem de Davi: Oi, eu sou Davi e esta é uma postagem automática.
+[Eva] [3] Fez uma postagem: Oi, eu sou Eva e esta é uma postagem automática.
+[Davi] [4] Recebeu notificação da postagem de Eva: Oi, eu sou Eva e esta é uma postagem automática.
+[Ana] [1] Fez uma postagem: Oi, eu sou Ana e esta é uma postagem automática.
+[Eva] [2] Recebeu notificação da postagem de Ana: Oi, eu sou Ana e esta é uma postagem automática.
+[Beto] [1] Fez uma postagem: Oi, eu sou Beto e esta é uma postagem automática.
+[Ana] [2] Recebeu notificação da postagem de Beto: Oi, eu sou Beto e esta é uma postagem automática.
+[Carol] [1] Fez uma postagem: Oi, eu sou Carol e esta é uma postagem automática.
+[Beto] [2] Recebeu notificação da postagem de Carol: Oi, eu sou Carol e esta é uma postagem automática.
+[Davi] [1] Fez uma postagem: Oi, eu sou Davi e esta é uma postagem automática.
+[Carol] [2] Recebeu notificação da postagem de Davi: Oi, eu sou Davi e esta é uma postagem automática.
+[Eva] [3] Fez uma postagem: Oi, eu sou Eva e esta é uma postagem automática.
+[Davi] [4] Recebeu notificação da postagem de Eva: Oi, eu sou Eva e esta é uma postagem automática.
+[Ana] [1] Fez uma postagem: Oi, eu sou Ana e esta é uma postagem automática.
+[Eva] [2] Recebeu notificação da postagem de Ana: Oi, eu sou Ana e esta é uma postagem automática.
+[Beto] [1] Fez uma postagem: Oi, eu sou Beto e esta é uma postagem automática.
+[Ana] [2] Recebeu notificação da postagem de Beto: Oi, eu sou Beto e esta é uma postagem automática.
+[Carol] [1] Fez uma postagem: Oi, eu sou Carol e esta é uma postagem automática.
+[Beto] [2] Recebeu notificação da postagem de Carol: Oi, eu sou Carol e esta é uma postagem automática.
+[Davi] [1] Fez uma postagem: Oi, eu sou Davi e esta é uma postagem automática.
+[Carol] [2] Recebeu notificação da postagem de Davi: Oi, eu sou Davi e esta é uma postagem automática.
+[Eva] [3] Fez uma postagem: Oi, eu sou Eva e esta é uma postagem automática.
+[Davi] [4] Recebeu notificação da postagem de Eva: Oi, eu sou Eva e esta é uma postagem automática.
+[Ana] [1] Fez uma postagem: Oi, eu sou Ana e esta é uma postagem automática.
+[Eva] [2] Recebeu notificação da postagem de Ana: Oi, eu sou Ana e esta é uma postagem automática.
+[Beto] [1] Fez uma postagem: Oi, eu sou Beto e esta é uma postagem automática.
+[Ana] [2] Recebeu notificação da postagem de Beto: Oi, eu sou Beto e esta é uma postagem automática.
+[Carol] [1] Fez uma postagem: Oi, eu sou Carol e esta é uma postagem automática.
+[Beto] [2] Recebeu notificação da postagem de Carol: Oi, eu sou Carol e esta é uma postagem automática.
+[Davi] [1] Fez uma postagem: Oi, eu sou Davi e esta é uma postagem automática.
+[Carol] [2] Recebeu notificação da postagem de Davi: Oi, eu sou Davi e esta é uma postagem automática.
+[Eva] [3] Fez uma postagem: Oi, eu sou Eva e esta é uma postagem automática.
+[Davi] [4] Recebeu notificação da postagem de Eva: Oi, eu sou Eva e esta é uma postagem automática.
