@@ -3,3 +3,14 @@ Beto::Carol
 Carol::Davi
 Davi::Eva
 Eva::Ana
+Gabi::Eva
+Ana::Gabi
+Beto::Eva
+Gabi::Lala
+Gabi::igor
+leo::Gabi
+lari::leo
+lari::leo
+lari::mari
+lari::webos
+webos::lari

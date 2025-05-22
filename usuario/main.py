@@ -4,6 +4,7 @@ import time
 import requests
 import random
 import uuid
+from datetime import datetime, timedelta, timezone
 
 usuarios = {}
 
@@ -35,6 +36,7 @@ if os.path.exists("../data/seguidores.txt"):
                     if seguidor not in seguido.seguidores:
                         seguido.seguidores.append(seguidor)
 
+
 def menu():
     print("\n--- MENU ---")
     print("1. Criar novo usuário")
@@ -47,7 +49,8 @@ def menu():
     print("8. Teste automatizado com 5 usuários")
     print("9. Mostrar relógios")
     print("10. Ajustar relógios dos servidores (aleatório)")
-    print("11. Sair")
+    print("11. Historico")
+    print("12. Sair")
 
 def criar_usuario():
     nome = input("Nome do novo usuário: ").strip()
@@ -116,14 +119,22 @@ def enviar_msg():
 def seguir_usuario():
     seguidor = input("Quem vai seguir? ").strip()
     seguido = input("Quem será seguido? ").strip()
+    
     if seguidor not in usuarios or seguido not in usuarios:
-        print("Um ou ambos os usuários não existem.")
+        print("Usuário(s) não encontrado(s).")
         return
-    if seguidor == seguido:
-        print("Você não pode seguir a si mesmo.")
-        return
-    usuarios[seguidor].seguir(usuarios[seguido])
+
+    usuario1 = usuarios[seguidor]
+    usuario2 = usuarios[seguido]
+
+    usuario1.seguir(usuario2)
+
+    timestamp = int(time.time() * 1000)
+    with open("seguidores.txt", "a") as f:
+        f.write(f"{timestamp},{seguidor},{seguido}\n")
+
     print(f"{seguidor} agora segue {seguido}.")
+
 
 def mostrar_log():
     nome = input("Nome do usuário: ").strip()
@@ -243,8 +254,16 @@ def mostrar_relogios():
         try:
             response = requests.get(f"{servidor}/status")
             data = response.json()
-            relogio = data.get("relogio", "Desconhecido")
-            print(f"{servidor}: {relogio}")
+            relogio_raw = data.get("relogio", None)
+
+            if relogio_raw:
+                fuso_brasilia = timezone(timedelta(hours=-3))
+                dt = datetime.fromtimestamp(relogio_raw / 1000, tz=fuso_brasilia)
+                relogio_formatado = dt.strftime("%Y-%m-%d %H:%M:%S")
+            else:
+                relogio_formatado = "Desconhecido"
+
+            print(f"{servidor}: {relogio_formatado}")
         except Exception as e:
             print(f"Erro ao acessar {servidor}: {e}")
 
@@ -257,6 +276,73 @@ def ajustar_relogio_servidor():
             print(f"{servidor}: Relógio ajustado com deslocamento {ajuste} ms")
         except Exception as e:
             print(f"Erro ao ajustar relógio de {servidor}: {e}")
+
+def formatar_ts(ts):
+    try:
+        return datetime.fromtimestamp(ts / 1000).strftime('%Y-%m-%d %H:%M:%S')
+    except:
+        return str(ts)
+
+import requests
+from datetime import datetime
+
+def formatar_ts(timestamp):
+    try:
+        return datetime.fromtimestamp(int(timestamp)/1000).strftime("%Y-%m-%d %H:%M:%S")
+    except:
+        return str(timestamp)
+
+def historico():
+    def ler_seguidores_txt():
+        try:
+            with open("seguidores.txt", "r") as f:
+                linhas = f.readlines()
+            
+            print("\n--- Seguir (do arquivo seguidores.txt) ---")
+            for linha in linhas:
+                partes = linha.strip().split(",")
+                if len(partes) == 3:
+                    ts, de, para = partes
+                    print(f"[{formatar_ts(ts)}] {de} seguiu {para}")
+        except FileNotFoundError:
+            print("\n--- Seguir ---\nNenhum registro encontrado.")
+
+    try:
+        servidor_num = input("Escolha o servidor (1, 2 ou 3): ").strip()
+        if servidor_num not in ['1', '2', '3']:
+            print("Número inválido. Escolha entre 1, 2 ou 3.")
+            return
+        
+        porta = f"300{servidor_num}"
+        url = f"http://localhost:{porta}/historico"
+        
+        r = requests.get(url)
+        if r.status_code != 200:
+            print("Erro ao obter histórico do servidor.")
+            return
+        
+        dados = r.json()
+        mensagens = dados.get("mensagens", [])
+        postagens = dados.get("postagens", [])
+        seguidores = dados.get("seguidores", [])
+
+        print("\n--- Postagens (ordenadas por timestamp) ---")
+        for p in sorted(postagens, key=lambda x: x["timestamp"]):
+            print(f"[{formatar_ts(p['timestamp'])}] {p['nome']}: {p['texto']}")
+        
+        print("\n--- Mensagens (ordenadas por timestamp) ---")
+        for m in sorted(mensagens, key=lambda x: x["timestamp"]):
+            print(f"[{formatar_ts(m['timestamp'])}] {m['de']} -> {m['para']}: {m['texto']}")
+
+        print("\n--- Seguir (ordenado por timestamp) ---")
+        for s in sorted(seguidores, key=lambda x: x["timestamp"]):
+            print(f"[{formatar_ts(s['timestamp'])}] {s['de']} seguiu {s['para']}")
+
+        # Leitura complementar do seguidores.txt
+        ler_seguidores_txt()
+
+    except Exception as e:
+        print(f"Erro ao conectar ao servidor: {e}")
 
 def main():
     while True:
@@ -283,6 +369,8 @@ def main():
         elif escolha == "10":
             ajustar_relogio_servidor()
         elif escolha == "11":
+            historico()            
+        elif escolha == "12":
             print("Saindo...")
             break
         else:

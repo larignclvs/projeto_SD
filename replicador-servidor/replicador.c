@@ -42,7 +42,7 @@ void replicar_para_outros(const char *mensagem) {
         inet_pton(AF_INET, SERVIDORES_REPLICA[i], &dest.sin_addr);
 
         if (connect(sock, (struct sockaddr *)&dest, sizeof(dest)) < 0) {
-            printf("⚠️  Falha ao conectar com servidor %d\n", i + 1);
+            printf("Falha ao conectar com servidor %d\n", i + 1);
             close(sock);
             continue;
         }
@@ -81,7 +81,7 @@ int main() {
         exit(EXIT_FAILURE);
     }
 
-    printf("🟢 Servidor replicador ouvindo na porta %d...\n", PORTA);
+    printf(" Servidor replicador ouvindo na porta %d...\n", PORTA);
 
     while (1) {
         cliente_fd = accept(servidor_fd, (struct sockaddr *)&endereco, &addrlen);

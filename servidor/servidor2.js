@@ -18,15 +18,23 @@ const todos_servidores = [
   { url: 'http://servidor3:3003', id: 3 }
 ];
 const outrosServidores = todos_servidores.filter(s => s.id !== meuId);
+const {
+  getRelogioFisico,
+  getRelogioLogico,
+  iniciarSincronizacao,
+  incrementarLogico,
+  atualizarLogico
+} = require('./sync.js'); // ajuste caminho conforme sua estrutura
+
 
 let postagens = [];
-let mensagens = []; // Armazena mensagens recebidas
+let mensagens = []; 
+let seguidores = [];
 let coordenador = null;
 let meuRelogio = Date.now();
+const seguidoresProcessados = new Set();
+const net = require('net'); 
 
-const net = require('net'); // já está no topo
-
-// Função fetch com retry limitado
 async function fetchComRetry(url, options = {}, maxTentativas = 5, delayMs = 1000) {
   for (let tentativa = 1; tentativa <= maxTentativas; tentativa++) {
     try {
@@ -45,7 +53,8 @@ async function fetchComRetry(url, options = {}, maxTentativas = 5, delayMs = 100
 }
 
 app.post('/enviar', async (req, res) => {
-  const { id, de, para, texto } = req.body;
+  const { id, de, para, texto, timestamp: timestampRecebido } = req.body;
+  
 
   if (!id) {
     return res.status(400).json({ error: 'Mensagem sem ID' });
@@ -57,32 +66,33 @@ app.post('/enviar', async (req, res) => {
   }
 
   mensagensProcessadas.add(id);
+  const timestamp = timestampRecebido !== undefined
+    ? atualizarLogico(timestampRecebido)
+    : incrementarLogico();
 
-  const timestamp = Date.now();
   const msg = { id, tipo: 'mensagem', de, para, texto, timestamp };
-
   mensagens.push(msg);
-  console.log(`[Mensagem] ${de} -> ${para}: ${texto}`);
+  console.log(`[Mensagem] ${de} -> ${para}: ${texto} (t=${timestamp})`);
 
   for (let s of outrosServidores) {
     try {
       await fetchComRetry(s.url + '/enviar', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id, de, para, texto }),
+        body: JSON.stringify({ id, de, para, texto, timestamp }),
       });
     } catch (e) {
       console.log(`Erro replicando para ${s.url}: ${e.message}`);
     }
   }
 
-  res.json({ status: 'Mensagem replicada', servidor: PORT });
+  res.json({ status: 'Mensagem replicada', servidor: PORT, timestamp });
 });
 
 const postagensRecebidas = new Set();
 
 app.post('/postar', (req, res) => {
-  const { id, nome, texto, timestamp } = req.body;
+  const { id, nome, texto, timestamp: timestampRecebido } = req.body;
 
   if (postagensRecebidas.has(id)) {
     return res.json({ status: 'Postagem já recebida, ignorando para evitar replicação.' });
@@ -90,9 +100,12 @@ app.post('/postar', (req, res) => {
 
   postagensRecebidas.add(id);
 
-  // Salve a postagem normalmente, registre no log, etc.
-  mensagens.push({ id, nome, texto, timestamp });
-  console.log(`[POSTAGEM] ${nome}: ${texto}`);
+  const timestamp = timestampRecebido !== undefined
+    ? atualizarLogico(timestampRecebido)
+    : incrementarLogico();
+
+  postagens.push({ id, nome, texto, timestamp });
+  console.log(`[POSTAGEM] ${nome}: ${texto} (t=${timestamp})`);
 
   // Replicar para outros servidores
   for (let s of outrosServidores) {
@@ -106,18 +119,20 @@ app.post('/postar', (req, res) => {
     }
   }
 
-  res.json({ status: 'Postagem recebida e replicada com sucesso' });
+  res.json({ status: 'Postagem replicada', servidor: PORT, timestamp });
 });
 
 
 app.get('/postagens', (req, res) => {
-  return res.json(postagens);
+  const ordenadas = postagens.slice().sort((a, b) => a.timestamp - b.timestamp);
+  res.json(ordenadas);
 });
 
-// Rota para ver mensagens (debug)
 app.get('/mensagens', (req, res) => {
-  return res.json(mensagens);
+  const ordenadas = mensagens.slice().sort((a, b) => a.timestamp - b.timestamp);
+  res.json(ordenadas);
 });
+
 
 // Eleição: outro servidor chama essa rota para ver se estou ativo
 app.get('/vivo', (req, res) => {
@@ -164,6 +179,42 @@ app.post('/iniciar-eleicao', async (req, res) => {
   res.json({ coordenador });
 });
 
+app.post('/seguir', async (req, res) => {
+  const { id, de, para, timestamp: timestampRecebido } = req.body;
+
+  if (!id) {
+    return res.status(400).json({ error: 'Ação de seguir sem ID' });
+  }
+
+  if (seguidoresProcessados.has(id)) {
+    return res.json({ status: 'Ação de seguir já processada, ignorando' });
+  }
+
+  seguidoresProcessados.add(id);
+
+  const timestamp = timestampRecebido !== undefined
+    ? atualizarLogico(timestampRecebido)
+    : incrementarLogico();
+
+  const seguir = { id, de, para, timestamp };
+  seguidores.push(seguir);
+  console.log(`[SEGUIR] ${de} seguiu ${para} (t=${timestamp})`);
+
+  for (let s of outrosServidores) {
+    try {
+      await fetchComRetry(s.url + '/seguir', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id, de, para, timestamp })
+      });
+    } catch (e) {
+      console.log(`Erro replicando seguir para ${s.url}: ${e.message}`);
+    }
+  }
+
+  res.json({ status: 'Seguir replicado', servidor: PORT, timestamp });
+});
+
 async function sincronizarComServidorPrincipal() {
   const url = 'http://servidor1:3001/sincronizar';
 
@@ -180,6 +231,7 @@ async function sincronizarComServidorPrincipal() {
   }
 }
 
+
 app.post('/sincronizar', (req, res) => {
   const { novoTempo } = req.body;
   meuRelogio = novoTempo;
@@ -192,7 +244,49 @@ app.get('/status', (req, res) => {
   res.json({ id: meuId, coordenador, relogio: meuRelogio });
 });
 
-app.listen(PORT, () => {
-  console.log(`Servidor ${meuId} rodando na porta ${PORT}`);
-  sincronizarComServidorPrincipal(); // chamada automática ao iniciar
+app.get('/historico', (req, res) => {
+  res.json({ mensagens, postagens, seguidores });
 });
+
+async function recuperarHistorico() {
+  for (let s of outrosServidores) {
+    try {
+      const res = await fetchComRetry(s.url + '/historico');
+      const data = await res.json();
+
+      let novasMsgs = 0, novasPosts = 0, novosSeguidores = 0;
+
+      // Recuperar mensagens
+      for (let m of data.mensagens || []) {
+        if (!mensagensProcessadas.has(m.id)) {
+          mensagens.push(m);
+          mensagensProcessadas.add(m.id);
+          novasMsgs++;
+          console.log(`[RECUPERADO] ${m.de} -> ${m.para}: ${m.texto}`);
+        }
+      }
+      // Recuperar postagens
+      for (let p of data.postagens || []) {
+        if (!postagensRecebidas.has(p.id)) {
+          postagens.push(p);
+          postagensRecebidas.add(p.id);
+          novasPosts++;
+          console.log(`[RECUPERADO POSTAGEM] ${p.nome}: ${p.texto}`);
+        }
+      }
+
+      console.log(`Recuperado de ${s.url}: ${novasMsgs} mensagens, ${novasPosts} postagens`);
+      break; // só precisa de um que esteja online
+    } catch (e) {
+      console.log(`Erro ao recuperar histórico de ${s.url}: ${e.message}`);
+    }
+  }
+}
+
+
+app.listen(PORT, async () => {
+  console.log(`Servidor ${meuId} rodando na porta ${PORT}`);
+  await sincronizarComServidorPrincipal(); // sincroniza relógio
+  await recuperarHistorico(); // tenta recuperar mensagens/postagens perdidas
+});
+
